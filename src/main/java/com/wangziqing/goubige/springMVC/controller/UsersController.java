@@ -39,7 +39,7 @@ public class UsersController {
 		if(null==user){
 			jsonObject.put("IsSuccess", false);
 		}else jsonObject.put("IsSuccess", true);
-		jsonObject.replace("user", user);
+		//jsonObject.replace("user", user);
 		jsonObject.put("method", "authorizations");
 		System.out.println(jsonObject.toJSONString());
 		response.setHeader("Content-type", "text/html;charset=UTF-8");
@@ -58,7 +58,7 @@ public class UsersController {
 		if (null != usersService.getIDByPhoneAndEmail(user.getTelePhone(),
 				user.getEmail())) {
 			//已存在
-			jsonObject.replace("user", null);
+			//jsonObject.replace("user", null);
 			jsonObject.put("IsSuccess", false);
 		} else {
 			// 注册服务
@@ -66,7 +66,7 @@ public class UsersController {
 			// 返回结果
 			user = usersService.getByPhoneAndEmail(user.getTelePhone(),
 					user.getEmail(), user.getPassWord());
-			jsonObject.replace("user", user);
+			//jsonObject.replace("user", user);
 			jsonObject.put("IsSuccess", true);
 		}
 		System.out.println(jsonObject.toString());
@@ -86,7 +86,7 @@ public class UsersController {
 				Users.class);
 		user.setID(userID);
 		usersService.update(user);
-		jsonObject.replace("user", user);
+	//	jsonObject.replace("user", user);
 		response.setHeader("Content-type", "text/html;charset=UTF-8");
 		response.getWriter().print(jsonObject.toString());
 	}
